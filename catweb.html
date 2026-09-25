@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tout savoir sur CatWeb - CatWeb Tuto FR</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f7fb;color:#171923;line-height:1.7}
+header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
+.nav{max-width:1050px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-weight:800;font-size:20px}.nav a,.link{color:#2563eb;text-decoration:none;font-weight:700}
+main{max-width:1000px;margin:auto;padding:50px 20px}.hero{text-align:center;margin-bottom:34px}.hero h1{font-size:46px;margin:0 0 10px}.hero p{font-size:18px;color:#606776;max-width:760px;margin:auto}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:28px;margin:20px 0;box-shadow:0 6px 20px #00000008}
+.card h2{margin-top:0}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.mini{background:#f8faff;border:1px solid #e4e9f4;border-radius:14px;padding:18px}
+img{width:100%;display:block;border-radius:14px;border:1px solid #e5e7eb;margin:18px 0}.caption{font-size:13px;color:#737b8c;margin-top:-10px}
+.steps{counter-reset:n}.step{position:relative;padding-left:48px;margin:20px 0}.step:before{counter-increment:n;content:counter(n);position:absolute;left:0;top:1px;width:32px;height:32px;border-radius:50%;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
+.note{background:#eef5ff;border-left:4px solid #2563eb;padding:15px 18px;border-radius:10px}.back{text-align:center;margin:34px}.btn{display:inline-block;background:#2563eb;color:white;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:12px}
+footer{text-align:center;color:#7a8190;padding:10px 20px 40px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:36px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">CatWeb Tuto FR</div><a href="index.html">Accueil</a></div></header>
+<main>
+<section class="hero"><h1>Découvrir CatWeb</h1><p>Avant de commencer les tutoriels, voici les bases à connaître pour comprendre ce que l’on peut créer dans CatWeb.</p></section>
+
+<section class="card">
+<h2>CatWeb, c’est quoi ?</h2>
+<p>CatWeb: Make a Website! est une expérience Roblox consacrée à la création de sites à l’intérieur du jeu. Vous pouvez construire et personnaliser un site, le publier, visiter les créations des autres joueurs et utiliser des scripts pour ajouter de l’interactivité.</p>
+<p>Les adresses en <strong>.rbx</strong> appartiennent uniquement à CatWeb : ce ne sont pas de vrais domaines du Web.</p>
+<img src="https://static.wikia.nocookie.net/catweb/images/a/a9/Domainspage.png/revision/latest/scale-to-width-down/1200?cb=20250923212734" alt="Écran des domaines dans CatWeb">
+<p class="caption">Exemple de l’écran de gestion des domaines CatWeb.</p>
+</section>
+
+<section class="card">
+<h2>Ce que l’on peut faire</h2>
+<div class="grid">
+<div class="mini"><strong>Créer un site</strong><br>Construire ses propres pages et organiser les éléments comme on le souhaite.</div>
+<div class="mini"><strong>Personnaliser</strong><br>Modifier les éléments du site pour donner à chaque création son propre style.</div>
+<div class="mini"><strong>Ajouter des scripts</strong><br>Créer de la logique, des interactions et des comportements dynamiques.</div>
+<div class="mini"><strong>Publier et explorer</strong><br>Partager sa création et découvrir les sites réalisés par les autres joueurs.</div>
+<div class="mini"><strong>Collaborer</strong><br>CatWeb permet aussi de construire et de scripter avec des amis.</div>
+<div class="mini"><strong>Utiliser un domaine .rbx</strong><br>Donner à son site une adresse propre à l’univers CatWeb.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>L’éditeur</h2>
+<p>L’éditeur est l’endroit où vous construisez votre site. Le principe est de créer une page, d’y ajouter les éléments nécessaires, puis de les régler et de les organiser. Ensuite, les scripts permettent d’aller plus loin : un bouton peut déclencher une action, une valeur peut être stockée dans une variable et différents événements peuvent faire réagir la page.</p>
+<img src="https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/optimized/5X/5/c/7/e/5c7e550cd5fa50b1be738c5f51e6e2e2a5ad2132_2_690x388.png" alt="Exemple d'édition collaborative dans CatWeb">
+<p class="caption">Exemple d’une page CatWeb en cours d’édition.</p>
+</section>
+
+<section class="card">
+<h2>Le principe des scripts</h2>
+<p>Les scripts servent à rendre le site interactif. Sur CatWeb Tuto FR, nous allons apprendre progressivement à utiliser les blocs disponibles sans essayer de tout apprendre d’un coup.</p>
+<div class="steps">
+<div class="step"><strong>Comprendre les événements.</strong><br>Par exemple, lancer une action lorsqu’un bouton est pressé.</div>
+<div class="step"><strong>Lire et modifier des valeurs.</strong><br>Récupérer du texte, travailler avec des nombres et utiliser des variables.</div>
+<div class="step"><strong>Modifier la page.</strong><br>Changer un texte ou faire réagir un élément selon ce que fait le visiteur.</div>
+<div class="step"><strong>Assembler plusieurs blocs.</strong><br>Créer progressivement des systèmes plus complets comme une calculatrice, un menu ou une animation.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>Ton premier objectif</h2>
+<p>Pour débuter, le mieux est de faire quelque chose de simple : créer un site, ajouter quelques éléments, vérifier que la page fonctionne, puis ajouter une première interaction. Ensuite seulement, on passe aux variables et aux scripts plus complexes.</p>
+<div class="note"><strong>Important :</strong> les tutoriels de CatWeb Tuto FR utiliseront les noms des blocs réellement présents dans CatWeb. Les pages seront enrichies progressivement avec des captures et des exemples.</div>
+</section>
+
+<section class="card">
+<h2>La suite du site</h2>
+<p>Cette page sert d’introduction. Les prochaines parties pourront devenir de vrais chapitres : créer son premier site, comprendre l’éditeur, utiliser les boutons, variables et textes, faire une calculatrice, créer des animations et construire des projets complets.</p>
+<p>CatWeb permet aussi de collaborer avec des amis et de publier ses créations pour que d’autres joueurs puissent les explorer.</p>
+</section>
+
+<div class="back"><a class="btn" href="index.html">Retour à l'accueil</a></div>
+</main>
+<footer>CatWeb Tuto FR — Guide francophone non officiel</footer>
+</body>
+</html>
