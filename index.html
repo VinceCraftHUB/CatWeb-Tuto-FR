@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CatWeb Tuto FR - Comment coder? - Roblox</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f7fb;color:#171923;line-height:1.6}
+header{background:white;border-bottom:1px solid #e5e7eb}.nav{max-width:1000px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-size:20px;font-weight:800}.actions{display:flex;align-items:center;gap:10px}button{font:inherit;padding:10px 16px;border-radius:10px;border:0;cursor:pointer}
+.primary{background:#2563eb;color:white}.secondary,.google{background:white;border:1px solid #d1d5db}.user{font-size:14px;color:#606776}
+main{max-width:900px;margin:auto;padding:65px 20px}.hero{text-align:center;margin-bottom:40px}.hero h1{font-size:50px;line-height:1.1;margin:0 0 15px}.hero p{font-size:18px;color:#606776}
+.card{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:25px;margin:18px 0}.card h2{margin-top:0}.construction{text-align:center;color:#606776;margin-top:40px}
+dialog{border:0;border-radius:18px;padding:0;width:min(430px,calc(100% - 28px));box-shadow:0 20px 70px #0004}dialog::backdrop{background:#0008}.modal{padding:26px}
+.close{float:right;background:none;font-size:22px;padding:0 4px}.sub{color:#606776}.google{width:100%;font-weight:bold}label{display:block;font-weight:bold;margin:13px 0 6px}
+input{width:100%;font:inherit;padding:12px;border:1px solid #cfd3dc;border-radius:10px}.wide{width:100%;margin-top:15px}.or{text-align:center;color:#606776;margin:15px}
+.msg{min-height:24px;margin-top:12px;font-size:14px}.error{color:#b42318}.ok{color:#067647}.switch{text-align:center;font-size:14px}.link{background:none;color:#2563eb;padding:0;font-weight:bold}
+@media(max-width:500px){.hero h1{font-size:38px}.nav{align-items:flex-start}.actions{flex-wrap:wrap;justify-content:flex-end}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">CatWeb Tuto FR</div><div class="actions"><span id="userInfo" class="user"></span><button id="loginBtn" class="primary">Se connecter</button><button id="logoutBtn" class="secondary" hidden>Se déconnecter</button></div></div></header>
+<main>
+<section class="hero"><h1>CatWeb Tuto FR</h1><p>Apprenez à créer avec CatWeb sur Roblox grâce à des tutoriels en français, expliqués progressivement et simplement.</p></section>
+<section class="card"><h2>Bienvenue sur CatWeb Tuto FR</h2><p>CatWeb Tuto FR est un site consacré à CatWeb sur Roblox. Son objectif est de vous aider à découvrir CatWeb et à apprendre progressivement à créer vos propres sites.</p></section>
+<section class="card"><h2>Qu’est-ce que CatWeb ?</h2><p>CatWeb est une expérience Roblox dans laquelle vous pouvez créer vos propres sites à l’aide d’un éditeur. Vous pouvez ajouter différents éléments à vos pages et utiliser un système de scripts par blocs pour créer des interactions et rendre vos projets plus avancés.</p></section>
+<section class="card"><h2>Que trouverez-vous sur ce site ?</h2><p>Vous trouverez progressivement des tutoriels en français pour apprendre à utiliser CatWeb, depuis la création de votre premier site jusqu’à l’utilisation des scripts, des variables, des boutons, des animations et d’autres fonctionnalités.</p><p>Les tutoriels seront expliqués étape par étape afin que vous puissiez reproduire facilement les différentes manipulations directement dans CatWeb.</p></section>
+<p class="construction"><strong>Le site est actuellement en construction.</strong><br>De nouveaux tutoriels et de nouvelles explications seront ajoutés progressivement.</p>
+</main>
+<dialog id="authDialog"><div class="modal">
+<button class="close" id="closeBtn" aria-label="Fermer">×</button><h2 id="authTitle">Se connecter</h2><p id="authSub" class="sub">Accédez à votre compte CatWeb Tuto FR.</p>
+<button id="googleBtn" class="google">Continuer avec Google</button><div class="or">ou</div>
+<form id="authForm"><label for="email">Adresse e-mail</label><input id="email" type="email" autocomplete="email" required>
+<label for="password">Mot de passe</label><input id="password" type="password" minlength="6" autocomplete="current-password" required>
+<button id="submitBtn" class="primary wide" type="submit">Se connecter</button></form>
+<div id="message" class="msg" aria-live="polite"></div>
+<div class="switch"><span id="switchText">Pas encore de compte ? </span><button id="switchBtn" class="link" type="button">Créer un compte</button></div>
+</div></dialog>
+<script type="module">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const supabase=createClient('https://kvesvaybnkhpuythtdsu.supabase.co','sb_publishable_ZoMrkBx2a-UNTULGPGemog_TLRQTzCe');
+const $=s=>document.querySelector(s), dialog=$('#authDialog'), login=$('#loginBtn'), logout=$('#logoutBtn'), info=$('#userInfo'), form=$('#authForm'), msg=$('#message');
+let mode='login';
+function message(t,c=''){msg.textContent=t;msg.className='msg '+c}
+function setMode(m){mode=m;const r=m==='register';$('#authTitle').textContent=r?'Créer un compte':'Se connecter';$('#authSub').textContent=r?'Créez votre compte CatWeb Tuto FR.':'Accédez à votre compte CatWeb Tuto FR.';$('#submitBtn').textContent=r?'Créer mon compte':'Se connecter';$('#switchText').textContent=r?'Vous avez déjà un compte ? ':'Pas encore de compte ? ';$('#switchBtn').textContent=r?'Se connecter':'Créer un compte';$('#password').autocomplete=r?'new-password':'current-password';message('')}
+async function refresh(){const {data:{session}}=await supabase.auth.getSession();const u=session?.user;if(u){info.textContent=u.user_metadata?.full_name||u.email||'Compte connecté';login.hidden=true;logout.hidden=false;if(dialog.open)dialog.close()}else{info.textContent='';login.hidden=false;logout.hidden=true}}
+login.addEventListener('click',()=>{setMode('login');dialog.showModal()});$('#closeBtn').addEventListener('click',()=>dialog.close());$('#switchBtn').addEventListener('click',()=>setMode(mode==='login'?'register':'login'));
+form.addEventListener('submit',async e=>{e.preventDefault();message('Veuillez patienter…');$('#submitBtn').disabled=true;try{if(mode==='register'){const {data,error}=await supabase.auth.signUp({email:$('#email').value.trim(),password:$('#password').value,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;if(data.session){await refresh()}else message('Compte créé. Vérifiez votre e-mail pour confirmer votre inscription.','ok')}else{const {error}=await supabase.auth.signInWithPassword({email:$('#email').value.trim(),password:$('#password').value});if(error)throw error;await refresh()}}catch(e){message(e.message||'Une erreur est survenue.','error')}finally{$('#submitBtn').disabled=false}});
+$('#googleBtn').addEventListener('click',async()=>{message('Ouverture de Google…');const {error}=await supabase.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});if(error)message(error.message,'error')});
+logout.addEventListener('click',async()=>{await supabase.auth.signOut();await refresh()});supabase.auth.onAuthStateChange(()=>setTimeout(refresh,0));await refresh();
+</script></body></html>
